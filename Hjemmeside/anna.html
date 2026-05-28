@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Anna</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- TOPBJÆLKE (IDENTISK MED OM OS) --- */
+        .topbar {
+            width: 100%;
+            padding: 22px 60px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999999999999999999;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 55, 95, 0.65),
+                rgba(0, 110, 150, 0.55),
+                rgba(0, 160, 210, 0.45)
+            );
+            backdrop-filter: blur(26px) saturate(220%);
+            -webkit-backdrop-filter: blur(26px) saturate(220%);
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.55);
+            box-shadow:
+                0 12px 40px rgba(0,0,0,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.95),
+                inset 0 -3px 12px rgba(255,255,255,0.25);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            z-index: 999999999999999999999;
+        }
+
+        .dropbtn {
+            background: linear-gradient(
+                135deg,
+                rgba(255,255,255,0.40),
+                rgba(210,240,255,0.30)
+            );
+            color: white;
+            padding: 14px 36px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 14px;
+            backdrop-filter: blur(12px);
+            transition: 0.25s ease;
+            letter-spacing: 0.7px;
+            font-weight: 600;
+            box-shadow:
+                0 5px 16px rgba(0,0,0,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.7);
+        }
+
+        .dropbtn:hover {
+            background: rgba(255,255,255,0.6);
+            box-shadow:
+                0 10px 26px rgba(0,0,0,0.35),
+                inset 0 1px 0 rgba(255,255,255,1);
+            transform: translateY(-2px);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 55, 95, 0.65),
+                rgba(0, 110, 150, 0.55),
+                rgba(0, 160, 210, 0.45)
+            );
+            backdrop-filter: blur(22px) saturate(220%);
+            min-width: 240px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow:
+                0 14px 40px rgba(0,0,0,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.8),
+                inset 0 -2px 10px rgba(255,255,255,0.25);
+            border: 1px solid rgba(255,255,255,0.55);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 16px 22px;
+            text-decoration: none;
+            display: block;
+            font-size: 17px;
+            transition: 0.2s ease;
+            font-weight: 500;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(30px);
+        }
+
+        /* --- INDHOLD --- */
+        .profile-section {
+            padding-top: 180px;
+            padding-bottom: 100px;
+            background: linear-gradient(180deg, #bfe9ff, #e6f7ff);
+            text-align: center;
+        }
+
+        .profile-section h1 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 80px;
+            color: #003344;
+        }
+
+        .profile-img {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-text {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 22px;
+            line-height: 1.7;
+            color: #003344;
+        }
+
+        /* TILBAGE-KNAP */
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 26px;
+            background: linear-gradient(
+                135deg,
+                rgba(255,255,255,0.45),
+                rgba(210,240,255,0.35)
+            );
+            color: #003344;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+            border-radius: 14px;
+            backdrop-filter: blur(12px);
+            transition: 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.65);
+            transform: translateY(-3px);
+        }
+
+        /* FOOTER */
+        .footer {
+            width: 100%;
+            background: #003344;
+            color: white;
+            padding: 40px 60px;
+            text-align: left;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOPMENU -->
+    <div class="topbar">
+        <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a href="ådalen.html">Forside</a>
+                <a href="Om os.html">Om os</a>
+                <a href="#">Efterskole</a>
+                <a href="#">Udveksling</a>
+                <a href="#">Kontakt</a>
+                <a href="#">Indstillinger</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- INDHOLD -->
+    <div class="profile-section">
+        <h1>Anna</h1>
+
+        <div class="profile-img">
+            <img src="anna.png" alt="Anna">
+        </div>
+
+        <div class="profile-text">
+            <p>Skriv en flot tekst om Anna her.</p>
+        </div>
+
+        <a href="Om os.html" class="back-btn">← Tilbage</a>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <strong>Adresse:</strong> Eksempelvej 12, 8362 Hørning<br>
+        <strong>Email:</strong> kontakt@aadalen.dk<br>
+        <strong>Telefon:</strong> +45 12 34 56 78<br>
+        © 2026 Ådalen – Alle rettigheder forbeholdes
+    </div>
+
+</body>
+</html>

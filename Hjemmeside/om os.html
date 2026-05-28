@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Dannelse</title>
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- TOPBJÆLKE --- */
+        .topbar {
+            width: 100%;
+            padding: 22px 60px;
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            z-index: 999999999999999999;
+
+            background: linear-gradient(
+                135deg,
+                rgba(0, 55, 95, 0.65),
+                rgba(0, 110, 150, 0.55),
+                rgba(0, 160, 210, 0.45)
+            );
+            backdrop-filter: blur(26px) saturate(220%);
+            -webkit-backdrop-filter: blur(26px) saturate(220%);
+
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 40px;
+
+            border-bottom: 1px solid rgba(255,255,255,0.55);
+            box-shadow:
+                0 12px 40px rgba(0,0,0,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.95),
+                inset 0 -3px 12px rgba(255,255,255,0.25);
+
+            position: relative;
+        }
+
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            z-index: 999999999999999999999;
+        }
+
+        /* Menu-knap */
+        .dropbtn {
+            background: linear-gradient(
+                135deg,
+                rgba(255,255,255,0.40),
+                rgba(210,240,255,0.30)
+            );
+            color: white;
+            padding: 14px 36px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 14px;
+            backdrop-filter: blur(12px);
+            transition: 0.25s ease;
+            letter-spacing: 0.7px;
+            font-weight: 600;
+            box-shadow:
+                0 5px 16px rgba(0,0,0,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.7);
+        }
+
+        .dropbtn:hover {
+            background: rgba(255,255,255,0.6);
+            box-shadow:
+                0 10px 26px rgba(0,0,0,0.35),
+                inset 0 1px 0 rgba(255,255,255,1);
+            transform: translateY(-2px);
+        }
+
+        /* Dropdown-boks */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+
+            background: linear-gradient(
+                135deg,
+                rgba(0, 55, 95, 0.65),
+                rgba(0, 110, 150, 0.55),
+                rgba(0, 160, 210, 0.45)
+            );
+            backdrop-filter: blur(22px) saturate(220%);
+            min-width: 240px;
+
+            border-radius: 14px;
+            overflow: hidden;
+
+            box-shadow:
+                0 14px 40px rgba(0,0,0,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.8),
+                inset 0 -2px 10px rgba(255,255,255,0.25);
+
+            border: 1px solid rgba(255,255,255,0.55);
+
+            z-index: 999999999999999999999999999999999999999;
+        }
+
+        .dropdown:hover .dropbtn,
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 16px 22px;
+            text-decoration: none;
+            display: block;
+            font-size: 17px;
+            transition: 0.2s ease;
+            font-weight: 500;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(30px);
+        }
+
+        /* HERO-SEKTION */
+        .hero {
+            height: 100vh;
+            background:
+                linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+                url("os alle 3.png");
+            background-size: cover;
+            background-position: 70% center;
+        }
+
+        .hero h1 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 80px;
+            margin: 0;
+            text-shadow: 0 4px 20px black;
+            color: white;
+            position: relative;
+            top: 38%;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        /* TEAM-SEKTION */
+        .team-section {
+            width: 100%;
+            background: linear-gradient(180deg, #bfe9ff 0%, #e6f7ff 100%);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .team-section h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 70px;
+            margin-bottom: 60px;
+            color: #003344;
+            letter-spacing: 1px;
+        }
+
+        .team-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Klikbart kort */
+        .team-card {
+            background: white;
+            width: 300px;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transition: 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .team-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+        }
+
+        .team-img {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .team-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-card h3 {
+            font-size: 28px;
+            margin: 10px 0 15px;
+            color: #003344;
+            font-weight: bold;
+        }
+
+        .team-card p {
+            font-size: 18px;
+            color: #003344;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+        .footer {
+            width: 100%;
+            background: #003344;
+            color: white;
+            padding: 40px 60px;
+            text-align: left;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- TOPMENU -->
+    <div class="topbar">
+        <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a href="ådalen.html">Forside</a>
+                <a href="Om os.html">Om os</a>
+                <a href="#">Efterskole</a>
+                <a href="#">Udveksling</a>
+                <a href="#">Kontakt</a>
+                <a href="#">Indstillinger</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+        <h1>Om os</h1>
+    </div>
+
+    <!-- TEAM -->
+    <div class="team-section">
+        <h2>Mød os</h2>
+
+        <div class="team-wrapper">
+
+            <a href="josefine.html" class="team-card">
+                <div class="team-img">
+                    <img src="josefine.png" alt="Josefine">
+                </div>
+                <h3>Josefine</h3>
+                <p>Klik for at læse mere om Josefine.</p>
+            </a>
+
+            <a href="stine.html" class="team-card">
+                <div class="team-img">
+                    <img src="stine.png" alt="Stine">
+                </div>
+                <h3>Stine</h3>
+                <p>Klik for at læse mere om Stine.</p>
+            </a>
+
+            <a href="anna.html" class="team-card">
+                <div class="team-img">
+                    <img src="anna.png" alt="Anna">
+                </div>
+                <h3>Anna</h3>
+                <p>Klik for at læse mere om Anna.</p>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <strong>Adresse:</strong> Eksempelvej 12, 8362 Hørning<br>
+        <strong>Email:</strong> kontakt@aadalen.dk<br>
+        <strong>Telefon:</strong> +45 12 34 56 78<br>
+        © 2026 Ådalen – Alle rettigheder forbeholdes
+    </div>
+
+</body>
+</html>
